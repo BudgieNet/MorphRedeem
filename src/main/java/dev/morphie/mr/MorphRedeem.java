@@ -130,10 +130,9 @@ public class MorphRedeem extends JavaPlugin implements Listener {
     	ItemStack localItemStack = new ItemStack(Material.matchMaterial(paramString1), paramInt);
     	ItemMeta localItemMeta = localItemStack.getItemMeta();
     	localItemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ATTRIBUTES });
-    	localItemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_POTION_EFFECTS });
     	localItemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_DESTROYS });
     	if (paramBoolean) {
-    		localItemMeta.addEnchant(Enchantment.DURABILITY, 1, true);
+    		localItemMeta.addEnchant(Enchantment.UNBREAKING, 1, true);
     		localItemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
     	}
     	localItemMeta.setDisplayName(new StringUtils().addColor(paramString2));
@@ -146,7 +145,7 @@ public class MorphRedeem extends JavaPlugin implements Listener {
     	ItemStack localItemStack = new ItemStack(Material.matchMaterial(paramString1), paramInt, (short) glassInt);
     	ItemMeta localItemMeta = localItemStack.getItemMeta();
     	if (paramBoolean) {
-    		localItemMeta.addEnchant(Enchantment.DURABILITY, 1, true);
+    		localItemMeta.addEnchant(Enchantment.UNBREAKING, 1, true);
     		localItemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
     	}
     	localItemMeta.setDisplayName(new StringUtils().addColor(paramString2));
