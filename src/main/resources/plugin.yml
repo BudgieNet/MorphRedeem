@@ -2,7 +2,7 @@ name: MorphRedeem
 version: ${project.version}
 main: dev.morphie.mr.MorphRedeem
 author: Morphie
-api-version: 1.13
+api-version: 26.3
 depend: [mcMMO]
 softdepend: [PlaceholderAPI]
 folia-supported: true
