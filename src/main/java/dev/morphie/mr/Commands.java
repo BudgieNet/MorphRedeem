@@ -28,10 +28,18 @@ public class Commands implements CommandExecutor {
 	public Commands(MorphRedeem plugin) {
 		this.plugin = plugin;
 	}
+
+	// Console and command blocks have no credits, menu or mcMMO profile of their own.
+	private boolean isPlayer(CommandSender sender) {
+		if (sender instanceof Player) return true;
+		sender.sendMessage("This command can only be used by players.");
+		return false;
+	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("morphredeem") || cmd.getName().equalsIgnoreCase("redeem") || cmd.getName().equalsIgnoreCase("mr")) {
 			if (args.length == 0) {
+				if (!isPlayer(sender)) return true;
 				Player player = (Player)sender;
 				if (!player.isSleeping()) {
 					if (sender.hasPermission("morphredeem.redeem")) {
@@ -77,9 +85,9 @@ public class Commands implements CommandExecutor {
 					return true;
 				}
 			} else if (args[0].equalsIgnoreCase("Credits")) {
-				Player player = (Player)sender;
-				UUID uuid = player.getUniqueId();
 				if (args.length == 1) {
+					if (!isPlayer(sender)) return true;
+					UUID uuid = ((Player) sender).getUniqueId();
 					if (sender.hasPermission("morphredeem.credits")) {
 						sender.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("PlayerCreditsMessage").replace("%CREDITS%", new DataManager(plugin).getData(uuid, "Credits"))));
 						return true;
@@ -326,6 +334,7 @@ public class Commands implements CommandExecutor {
 		            	sender.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CorrectUsage.Send")));
 		            	return true;
 		            }
+		        	if (!isPlayer(sender)) return true;
 		        	Player commandSender = (Player) sender;
 		        	int amount = Integer.parseInt(args[2]);
 		            if (amount <= 0) {
@@ -433,6 +442,7 @@ public class Commands implements CommandExecutor {
 		        }
 			} else if (args.length == 2) {
 				if (sender.hasPermission("morphredeem.skillcommand")) {
+					if (!isPlayer(sender)) return true;
 					Player player = (Player)sender;
 					UUID uuid = player.getUniqueId();
 					String skill = args[0];
