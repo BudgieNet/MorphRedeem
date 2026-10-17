@@ -1,5 +1,6 @@
 package dev.morphie.mr;
 
+import com.budgienet.chatutil.ChatUtil;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class MorphRedeem extends JavaPlugin implements Listener {
 	public String Version;
 	
 	public void onEnable() {
+		ChatUtil.init(this);
 		this.pe = new PlayerFileEvent(this);
 		this.me = new RedeemMenuEvent(this);
 		this.ce = new RedeemChatEvent(this);
@@ -62,44 +64,44 @@ public class MorphRedeem extends JavaPlugin implements Listener {
 
 		Version = this.getDescription().getVersion();
 	    
-	    getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&8[----------[&3MorphRedeem&8]----------]"));
-	    getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&bVersion&8: &a" + this.Version));
+	    ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&8[----------[&3MorphRedeem&8]----------]"), false);
+	    ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&bVersion&8: &a" + this.Version), false);
 		createConfig();
 		loadConfigManager();
 		if (this.getConfig().getString("StorageMethod").equals("MySQL")) {
 			new MySQLConnection(this).mysqlSetup();
 			new MySQLConnection(this).checkStructure();
-			getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&bStorage Type&8: &aMySQL"));
+			ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&bStorage Type&8: &aMySQL"), false);
 		} else if(this.getConfig().getString("StorageMethod").equals("Redis")) {
 			new RedisConnection(this).auth();
-			getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&bStorage Type&8: &aRedis"));
+			ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&bStorage Type&8: &aRedis"), false);
 		} else {
-			getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&bStorage Type&8: &aYML"));
+			ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&bStorage Type&8: &aYML"), false);
 		}
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
         	new MorphRedeemExpansion(this).register();
-        	getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&bPlaceholderAPI&8: &aHooked"));
+        	ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&bPlaceholderAPI&8: &aHooked"), false);
         } else {
-        	getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&bPlaceholderAPI&8: &cNot found"));
+        	ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&bPlaceholderAPI&8: &cNot found"), false);
         }
-	    getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&bPlugin Status&8: &aEnabled"));
-	    getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&8[----------[&3MorphRedeem&8]----------]"));
+	    ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&bPlugin Status&8: &aEnabled"), false);
+	    ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&8[----------[&3MorphRedeem&8]----------]"), false);
 
 		UpdateChecker updater = new UpdateChecker(this);
 		if (updater.checkForUpdates()) {
 			if (this.getConfig().getBoolean("Settings.UpdateChecker")) {
 				// Use the already fetched latest version from the updater instance
-				Bukkit.getConsoleSender().sendMessage(new StringUtils().addColor(this.getMessage("Prefix") + this.getMessage("UpdateMessage").replace("%VERSION%", updater.getLatestVersion()).replace("%LINK%", updater.getResourceURL())));
+				ChatUtil.sendMsg(Bukkit.getConsoleSender(), new StringUtils().addColor(this.getMessage("Prefix") + this.getMessage("UpdateMessage").replace("%VERSION%", updater.getLatestVersion()).replace("%LINK%", updater.getResourceURL())), false);
 			}
 		}
 	}
 	
 	public void onDisable(){
 		new RedisConnection(this).shutdown();
-		getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&8[----------[&3MorphRedeem&8]----------]"));
-		getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&bVersion&8: &a" + this.Version));
-	    getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&bPlugin Status&8: &cDisabled"));
-	    getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&8[----------[&3MorphRedeem&8]----------]"));
+		ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&8[----------[&3MorphRedeem&8]----------]"), false);
+		ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&bVersion&8: &a" + this.Version), false);
+	    ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&bPlugin Status&8: &cDisabled"), false);
+	    ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&8[----------[&3MorphRedeem&8]----------]"), false);
 	}
 	
 	private void createConfig() {
@@ -109,15 +111,15 @@ public class MorphRedeem extends JavaPlugin implements Listener {
 			}
 			File file = new File(getDataFolder(), "config.yml");
 			if (!file.exists()) {
-				getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&bConfig&8: &aGenerating config."));
+				ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&bConfig&8: &aGenerating config."), false);
 				getConfig().options().copyDefaults(true);
 				saveDefaultConfig();
 			} else {
-				getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&bConfig&8: &aLoading config."));
+				ChatUtil.sendMsg(getServer().getConsoleSender(), new StringUtils().addColor("&bConfig&8: &aLoading config."), false);
 			}
 	    }
 	    catch (Exception e) {
-	    	e.printStackTrace();
+	    	ChatUtil.error(e.toString(), e);
 	    }
 	}
 	
@@ -173,7 +175,7 @@ public class MorphRedeem extends JavaPlugin implements Listener {
 				messagesCFG.save(messagesFile);
 				this.messages.setup();
 			} catch (IOException e) {
-				e.printStackTrace();
+				ChatUtil.error(e.toString(), e);
 			}
 		}
     }

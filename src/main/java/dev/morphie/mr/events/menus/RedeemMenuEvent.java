@@ -1,5 +1,6 @@
 package dev.morphie.mr.events.menus;
 
+import com.budgienet.chatutil.ChatUtil;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -50,263 +51,263 @@ public class RedeemMenuEvent implements Listener {
 		        normalItem = true;
 		    } else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.PluginCredits.Name")))) {
 		        event.setCancelled(true);
-		        player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("SpigotLink")));
+		        ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("SpigotLink")), false);
 		        normalItem = true;
 		    } if (!normalItem) {
 		    	if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Acrobatics.Name")))) {
 		    		event.setCancelled(true);
 		    		if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Acrobatics")) {
 		    			event.setCancelled(true);
-		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+		    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 		    		} else {
 			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 			    			plugin.addCredits.put(player, "Acrobatics");
 			    			player.closeInventory();
 			    		} else {
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Alchemy.Name")))) {
 		    		event.setCancelled(true);
 		    		if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Alchemy")) {
 		    			event.setCancelled(true);
-		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+		    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 		    		} else {
 			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 			    			plugin.addCredits.put(player, "Alchemy");
 			    			player.closeInventory();
 			    		} else {
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Archery.Name")))) {
 		    		event.setCancelled(true);
 		    		if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Archery")) {
 		    			event.setCancelled(true);
-		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+		    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 		    		} else {
 			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 			    			plugin.addCredits.put(player, "Archery");
 			    			player.closeInventory();
 			    		} else {
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Axes.Name")))) {
 					event.setCancelled(true);
 					if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Axes")) {
 						event.setCancelled(true);
-						player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+						ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 					} else {
 						if (!(plugin.addCredits.containsKey(player))) {
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+							ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 							plugin.addCredits.put(player, "Axes");
 							player.closeInventory();
 						} else {
 							String skill = plugin.addCredits.get(player);
 							player.closeInventory();
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+							ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 						}
 					}
 				} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Crossbows.Name")))) {
 					event.setCancelled(true);
 					if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Crossbows")) {
 						event.setCancelled(true);
-						player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+						ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 					} else {
 						if (!(plugin.addCredits.containsKey(player))) {
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+							ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 							plugin.addCredits.put(player, "Crossbows");
 							player.closeInventory();
 						} else {
 							String skill = plugin.addCredits.get(player);
 							player.closeInventory();
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+							ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 						}
 					}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Excavation.Name")))) {
 		    		event.setCancelled(true);
 		    		if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Excavation")) {
 		    			event.setCancelled(true);
-		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+		    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 		    		} else {
 			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 			    			plugin.addCredits.put(player, "Excavation");
 			    			player.closeInventory();
 			    		} else {
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Fishing.Name")))) {
 		    		event.setCancelled(true);
 		    		if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Fishing")) {
 		    			event.setCancelled(true);
-		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+		    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 		    		} else {
 			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 			    			plugin.addCredits.put(player, "Fishing");
 			    			player.closeInventory();
 			    		} else {
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Herbalism.Name")))) {
 		    		event.setCancelled(true);
 		    		if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Herbalism")) {
 		    			event.setCancelled(true);
-		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+		    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 		    		} else {
 			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 			    			plugin.addCredits.put(player, "Herbalism");
 			    			player.closeInventory();
 			    		} else {
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 			    		}
 		    		}
 				} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Maces.Name")))) {
 					event.setCancelled(true);
 					if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Maces")) {
 						event.setCancelled(true);
-						player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+						ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 					} else {
 						if (!(plugin.addCredits.containsKey(player))) {
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+							ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 							plugin.addCredits.put(player, "Maces");
 							player.closeInventory();
 						} else {
 							String skill = plugin.addCredits.get(player);
 							player.closeInventory();
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+							ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 						}
 					}
 				} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Mining.Name")))) {
 		    		event.setCancelled(true);
 		    		if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Mining")) {
 		    			event.setCancelled(true);
-		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+		    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 		    		} else {
 			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 			    			plugin.addCredits.put(player, "Mining");
 			    			player.closeInventory();
 			    		} else {
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Repair.Name")))) {
 		    		event.setCancelled(true);
 		    		if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Repair")) {
 		    			event.setCancelled(true);
-		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+		    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 		    		} else {
 			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 			    			plugin.addCredits.put(player, "Repair");
 			    			player.closeInventory();
 			    		} else {
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Swords.Name")))) {
 		    		event.setCancelled(true);
 		    		if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Swords")) {
 		    			event.setCancelled(true);
-		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+		    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 		    		} else {
 			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 			    			plugin.addCredits.put(player, "Swords");
 			    			player.closeInventory();
 			    		} else {
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Taming.Name")))) {
 					event.setCancelled(true);
 					if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Taming")) {
 						event.setCancelled(true);
-						player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+						ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 					} else {
 						if (!(plugin.addCredits.containsKey(player))) {
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+							ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 							plugin.addCredits.put(player, "Taming");
 							player.closeInventory();
 						} else {
 							String skill = plugin.addCredits.get(player);
 							player.closeInventory();
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+							ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 						}
 					}
 				} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Tridents.Name")))) {
 					event.setCancelled(true);
 					if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Tridents")) {
 						event.setCancelled(true);
-						player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+						ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 					} else {
 						if (!(plugin.addCredits.containsKey(player))) {
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+							ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 							plugin.addCredits.put(player, "Tridents");
 							player.closeInventory();
 						} else {
 							String skill = plugin.addCredits.get(player);
 							player.closeInventory();
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+							ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 						}
 					}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Unarmed.Name")))) {
 		    		event.setCancelled(true);
 		    		if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Unarmed")) {
 		    			event.setCancelled(true);
-		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+		    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 		    		} else {
 			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 			    			plugin.addCredits.put(player, "Unarmed");
 			    			player.closeInventory();
 			    		} else {
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Woodcutting.Name")))) {
 		    		event.setCancelled(true);
 		    		if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Woodcutting")) {
 		    			event.setCancelled(true);
-		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+		    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")), false);
 		    		} else {
 			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)), false);
 			    			plugin.addCredits.put(player, "Woodcutting");
 			    			player.closeInventory();
 			    		} else {
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    			ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)), false);
 			    		}
 		    		}
 		    	}

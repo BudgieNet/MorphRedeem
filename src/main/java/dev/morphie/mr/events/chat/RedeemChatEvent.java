@@ -1,5 +1,6 @@
 package dev.morphie.mr.events.chat;
 
+import com.budgienet.chatutil.ChatUtil;
 import java.util.UUID;
 
 import dev.morphie.mr.util.CreditConversion;
@@ -47,21 +48,21 @@ public class RedeemChatEvent implements Listener {
 	        	Integer.parseInt(chatMessage);
 	        }
 	        catch (NumberFormatException e1) {
-	        	player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("InvalidNumber")));
+	        	ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("InvalidNumber")), false);
 	        	return;
 	        }
 	        int amountToAdd = Integer.parseInt(chatMessage);
 	        int credits = Integer.parseInt(new DataManager(plugin).getData(uuid, "Credits"));
 	        if (credits < amountToAdd) {
-	        	player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("InvalidCredits")));
+	        	ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("InvalidCredits")), false);
 	        	return;
 	        }
 	        if (amountToAdd < 0) {
-	        	player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("InvalidNumberNegative")));
+	        	ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("InvalidNumberNegative")), false);
 	        	return;
 	        }
 	        if (amountToAdd == 0) {
-	        	player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentCanceled")));
+	        	ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentCanceled")), false);
 	        	return;
 	        }
 			if (plugin.getConfig().getBoolean("Settings.mcMMOSkillXP.Enabled")) {

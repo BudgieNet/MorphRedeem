@@ -1,5 +1,6 @@
 package dev.morphie.mr.files;
 
+import com.budgienet.chatutil.ChatUtil;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,7 +42,7 @@ public class Messages implements Listener {
 	    		this.messagesCFG.options().copyDefaults(true);
 	    		saveMessages();
 	    	} catch (IOException e) {
-	    		Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "Could not create the messages.yml file");
+	    		ChatUtil.sendMsg(Bukkit.getServer().getConsoleSender(), ChatColor.RED + "Could not create the messages.yml file", false);
 	    	}
 	    }
 	    this.messagesCFG = YamlConfiguration.loadConfiguration(this.messagesFile);
@@ -53,7 +54,7 @@ public class Messages implements Listener {
 		try {
 			this.messagesCFG.save(this.messagesFile);
 		} catch (IOException e) {
-			Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "Could not save the messages.yml file");
+			ChatUtil.sendMsg(Bukkit.getServer().getConsoleSender(), ChatColor.RED + "Could not save the messages.yml file", false);
 		}
 	}
     

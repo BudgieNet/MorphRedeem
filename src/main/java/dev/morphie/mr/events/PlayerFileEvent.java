@@ -1,5 +1,6 @@
 package dev.morphie.mr.events;
 
+import com.budgienet.chatutil.ChatUtil;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
@@ -44,8 +45,8 @@ public class PlayerFileEvent implements Listener {
   	  		              pd.save(file);
   	  		            }
   	  		            catch (IOException e) {
-  	  		              Bukkit.getServer().getLogger().log(Level.SEVERE, "Could not save " + uuid + "'s player file!");
-  	  		              e.printStackTrace();
+  	  		              ChatUtil.log(Level.SEVERE, "Could not save " + uuid + "'s player file!");
+  	  		              ChatUtil.error(e.toString(), e);
   	  		            }
   	  		        }
   	  			}
@@ -61,7 +62,7 @@ public class PlayerFileEvent implements Listener {
   	    		dataFile.save(data);
   	    	}	
   	    	catch (IOException e1) {
-  	    		e1.printStackTrace();
+  	    		ChatUtil.error(e1.toString(), e1);
   	    	}
   	    }
   		return data;  

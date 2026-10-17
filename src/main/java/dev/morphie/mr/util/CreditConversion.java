@@ -1,5 +1,6 @@
 package dev.morphie.mr.util;
 
+import com.budgienet.chatutil.ChatUtil;
 import com.gmail.nossr50.api.ExperienceAPI;
 import dev.morphie.mr.MorphRedeem;
 import org.bukkit.Bukkit;
@@ -30,7 +31,7 @@ public class CreditConversion {
                 if (message.contains("%LEVEL%")) {
                     message = message.replaceAll("%LEVEL%", "" + (ExperienceAPI.getLevel(player, SKILL) + CREDITS));
                 }
-                player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + message));
+                ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + message), false);
             } else {
                 new DataManager(this.plugin).updateData(uuid, +CREDITS, "Credits_Spent", "add");
                 new DataManager(this.plugin).updateData(uuid, -CREDITS, "Credits", "remove");
@@ -43,7 +44,7 @@ public class CreditConversion {
                 if (message.contains("%CREDITS%")) {
                     message = message.replaceAll("%CREDITS%", "" + CREDITS);
                 }
-                player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + message));
+                ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + message), false);
             }
         } else if (TYPE.equals("EXPERIENCE")) {
             int xp = this.plugin.getConfig().getInt("Settings.mcMMOSkillXP.XPpercredit");
@@ -63,7 +64,7 @@ public class CreditConversion {
             if (message.contains("%CREDITS%")) {
                 message = message.replaceAll("%CREDITS%", "" + CREDITS);
             }
-            player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + message));
+            ChatUtil.sendMsg(player, new StringUtils().addColor(this.plugin.getMessage("Prefix") + message), false);
         }
     }
 }

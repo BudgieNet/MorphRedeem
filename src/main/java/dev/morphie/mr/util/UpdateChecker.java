@@ -1,5 +1,6 @@
 package dev.morphie.mr.util;
 
+import com.budgienet.chatutil.ChatUtil;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.BufferedReader;
@@ -23,7 +24,7 @@ public class UpdateChecker {
         try {
             this.checkURL = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + project);
         } catch (MalformedURLException exception) {
-            plugin.getLogger().info("Unable to check for updates: " + exception.getMessage());
+            ChatUtil.log("Unable to check for updates: " + exception.getMessage());
         }
     }
     public int getProjectID() {
@@ -45,7 +46,7 @@ public class UpdateChecker {
     public boolean checkForUpdates() {
         try {
             if (this.checkURL == null) {
-                plugin.getLogger().warning("Update check URL is not configured.");
+                ChatUtil.warn("Update check URL is not configured.");
                 return false;
             }
             URLConnection con = this.checkURL.openConnection();
@@ -56,7 +57,7 @@ public class UpdateChecker {
             this.newVersion = (new BufferedReader(new InputStreamReader(con.getInputStream()))).readLine();
             return !this.plugin.getDescription().getVersion().equals(this.newVersion);
         } catch (Exception e) {
-            plugin.getLogger().warning("Could not check for updates: " + e.getMessage());
+            ChatUtil.warn("Could not check for updates: " + e.getMessage());
             return false;
         }
     }

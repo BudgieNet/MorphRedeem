@@ -1,5 +1,6 @@
 package dev.morphie.mr.files;
 
+import com.budgienet.chatutil.ChatUtil;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
@@ -44,7 +45,7 @@ public class PlayerFileMethods {
         playerCFG.save(playerFile);
       }
       catch (IOException e1) {
-        e1.printStackTrace();
+        ChatUtil.error(e1.toString(), e1);
       }
     }
     return playerFile;
@@ -60,7 +61,7 @@ public class PlayerFileMethods {
 	    }
 	    catch (IOException e)
 	    {
-	      e.printStackTrace();
+	      ChatUtil.error(e.toString(), e);
 	    }
 	}
 	
@@ -74,7 +75,7 @@ public class PlayerFileMethods {
 	    }
 	    catch (IOException e)
 	    {
-	      e.printStackTrace();
+	      ChatUtil.error(e.toString(), e);
 	    }
 	}
 	
@@ -88,7 +89,7 @@ public class PlayerFileMethods {
 	    }
 	    catch (IOException e)
 	    {
-	      e.printStackTrace();
+	      ChatUtil.error(e.toString(), e);
 	    }
 	}
 }

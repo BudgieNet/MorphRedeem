@@ -1,5 +1,6 @@
 package dev.morphie.mr.util.Database;
 
+import com.budgienet.chatutil.ChatUtil;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -46,9 +47,9 @@ public class MySQLConnection {
 				setConnection((Connection) DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database + this.ssl, this.username, this.password));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			ChatUtil.error(e.toString(), e);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			ChatUtil.error(e.toString(), e);
 		}
 	}
 	
@@ -66,7 +67,7 @@ public class MySQLConnection {
 			statement.executeUpdate();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			ChatUtil.error(e.toString(), e);
 		}
 	}
 	
@@ -84,7 +85,7 @@ public class MySQLConnection {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			ChatUtil.error(e.toString(), e);
 		}
 		return false;
 	}
@@ -107,7 +108,7 @@ public class MySQLConnection {
 				insert.executeUpdate();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			ChatUtil.error(e.toString(), e);
 		}
 	}
 	
@@ -126,7 +127,7 @@ public class MySQLConnection {
 			statement.setString(2, uuid.toString());
 			statement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			ChatUtil.error(e.toString(), e);
 		}
 	}
 	
@@ -147,7 +148,7 @@ public class MySQLConnection {
 				return results.getString(3).toString();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			ChatUtil.error(e.toString(), e);
 		}
 		return null;
 	}
