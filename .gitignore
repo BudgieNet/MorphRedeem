@@ -8,3 +8,6 @@
 /patch.diff
 .gradle/
 build/
+
+out/
+*.iml
